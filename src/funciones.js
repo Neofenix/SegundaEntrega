@@ -1,7 +1,7 @@
 const fs = require ('fs')
 listaUsuarios = [];
 
-crearUsuario = (...args) => {
+registrarUsuario = (...args) => {
 	listar();
     let usuario = {
 		documento:args[0],
@@ -13,17 +13,17 @@ crearUsuario = (...args) => {
 	let duplicado = listaUsuarios.find(doc => doc.documento == args[0])
 	if(!duplicado){
 	listaUsuarios.push(usuario);
-	console.log(listaUsuarios);
 	guardar();
 	}
 	else{
-		console.log('Ya existe otro estudiante con ese documento ')
+		throw 'Ya existe otro estudiante con ese documento '
 	}
 }
 
 const listar = () => {
 	try{
 		listaUsuarios = require('./listadousuarios.json');
+		console.log('test:' + listaUsuarios)
 	//listaEstudiantes = JSON.parse(fs.readFileSync('listado.json'));
 	}
 	catch(error){
@@ -135,7 +135,7 @@ const eliminar = (nom) => {
 }
 
 module.exports = {
-	crearUsuario,
+	registrarUsuario,
 	mostrar,
 	mostrarest,
 	mostrarmat,

@@ -21,7 +21,7 @@ app.get('/',(req, res) =>{
 
  app.post('/registrar',(req,res) =>{
      res.render('registrar',{
-         documento: req.body.documento,
+         documento: parseInt(req.body.documento),
          nombre: req.body.nombre,
          correo: req.body.correo,
          telefono: req.body.telefono
